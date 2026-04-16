@@ -57,6 +57,12 @@ The following environment variables can be adjusted:
 | :--- | :--- | :--- |
 | `MODEL_REPO` | `csukuangfj/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09` | The Hugging Face repo ID to download from. |
 | `NUM_THREADS` | `4` | Number of CPU threads used for inference. |
+| `TRADITIONAL_CHINESE` | *(unset)* | Set to `true` or `1` to force all Chinese output to Traditional Chinese, regardless of the requested language. Uses region-appropriate [OpenCC](https://github.com/BYVoid/OpenCC) profiles when available. |
+| `SIMPLIFIED_CHINESE` | *(unset)* | Set to `true` or `1` to force all Chinese output to Simplified Chinese, disabling any automatic Traditional Chinese conversion. |
+
+> **Note:** `TRADITIONAL_CHINESE` and `SIMPLIFIED_CHINESE` are mutually exclusive — only one may be set at a time. When neither is set, the server uses automatic conversion based on the requested language code (e.g., `zh-TW` → Taiwan Traditional, `yue-HK` → Hong Kong Traditional).
+
+The underlying Python server also accepts the equivalent command-line flags `--traditional-chinese` (`-tc`) and `--simplified-chinese` (`-sc`).
 
 ## Home Assistant Integration
 
